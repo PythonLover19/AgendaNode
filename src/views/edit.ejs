@@ -1,0 +1,27 @@
+<%- include('partials/_header')%>
+
+
+
+<div class="container">
+  <div class="row">
+    <!--FORM-->
+    <div class="col-md-5 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <form action="/edit/<%= user._id %>" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="nombre" placeholder="Nombre" pattern="[a-z]{4,8}" value="<%= user.nombre %>">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="tel" name="telefono" placeholder="Teléfono" maxlength="9" size="9" pattern="[0-9]{9}" value="<%= user.telefono %>">
+              
+            </div>
+            <button class="btn btn-primary" type="submit"> Actualizar </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include ('partials/_footer')%>

@@ -1,0 +1,56 @@
+<%- include('partials/_header')%>
+
+
+<div class="container">
+
+  <div class="row">
+    <!--FORM-->
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <form action="/add" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" name="nombre" placeholder="Introduzca Nombre" pattern="[a-z]{4,8}" required><br>
+            
+              <input class="form-control" type="tel" name="telefono" placeholder="Introduzca Teléfono" maxlength="9" size="9" pattern="[0-9]{9}" required><br>
+            </div>
+            <button class="btn btn-primary" type="submit">
+              AGREGAR
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div class="col-md-7">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < users.length; i++) { %>
+            <tr>
+              <td><%= i + 1%></td>
+              <td><strong><%= users[i].nombre %></strong></td>
+              <td><%= users[i].telefono %></td>
+              <td>
+                <a href="/delete/<%= users[i]._id %>" class="btn btn-danger"> Eliminar </a>
+                <a href="/edit/<%= users[i]._id %>" class="btn btn-info"> Editar </a>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
+
+<%- include ('partials/_footer')%>
